@@ -12,7 +12,7 @@ int main()
 {
 	char *a;
 
-	a = "He  ee eee eeeee llo";
+	a = "He  ee eele eeeee llo";
 	printf("ft_strchr = %s\n", ft_strchr(a, 'l'));
 	printf("strchr = %s", strchr(a, 'l'));
 }

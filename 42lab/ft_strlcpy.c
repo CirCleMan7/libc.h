@@ -24,8 +24,8 @@ int main()
     char x[10] = "Hellokdw";
     char y[10] = "World";
 
-    strlcpy(a, b, 4);
+    //strlcpy(a, b, 4);
     ft_strlcpy(x, y, 4);
     printf("ft_strlcpy = %s\n", x);
-    printf("strlcpy    = %s", a);
+    //printf("strlcpy    = %s", a);
 }
