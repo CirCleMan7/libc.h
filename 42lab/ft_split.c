@@ -1,8 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "ft_strlen.c"
-
-int ft_strlen(char *str);
 
 int strings_len(char *s, char c)
 {
@@ -11,21 +8,25 @@ int strings_len(char *s, char c)
     count = 0;
     while (*s)
     {
-        s++;
         if (*s == c)
             count++;
+        s++;
     }
+    printf("strings_len = %d\n", count);
     return count;
 }
 
 int string_len(char *s, char c)
 {
     int count;
+
+    count = 0;
     while (*s && *s != c)
     {
         s++;
         count++;
     }
+    printf("string_len = %d\n", count);
     return count;
 }
 
@@ -34,34 +35,39 @@ char **ft_split(char *s, char c)
     char **answer;
     char *buffer_str;
     char **start;
-    int amount;
+    int j;
+    int i;
 
     answer = malloc(strings_len(s, c));
     start = answer;
+    i = 0;
+    j = 0;
     while (*s)
     {
-        buffer_str = *answer;
-        buffer_str = malloc(string_len(s, c));
-        amount = string_len(s, c);
-        while (amount--)
+        answer[i] = malloc(string_len(s, c));
+        while (*s != c && *s) 
         {
-            if (*s == c)
-            {
-                s++;
-                (*answer)++;
-            }
-            *buffer_str = *s;
-            answer++;
+            answer[i][j] = *s;
+            j++;
+            s++;
         }
+        j = 0;
+        i++;
+        s++;
     }
     return answer;
 }
 
 int main()
 {
-    char s[20] = "1,2,3,4,5,6,7,8,9";
+    char s[100] = "Hel,lo,wor,ld,5,6,7,8,9";
     char **test;
 
     test = ft_split(s, ',');
-    printf("%c", test[0][0]);
+    for (int i = 0; i < 9; i++)
+        for (int j = 0; j < 3; j++)
+        {
+            printf("This array[%d][%d] = %c\n", i, j, test[i][j]);
+        }
+        
 }

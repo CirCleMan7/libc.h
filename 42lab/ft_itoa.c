@@ -48,8 +48,3 @@ char *ft_itoa(int n)
     }
     return start;
 }
-
-int main()
-{
-    printf("The answer is : %s", ft_itoa(207420));
-}
