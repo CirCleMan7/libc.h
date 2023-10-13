@@ -36,15 +36,15 @@ char    *ft_strnstr(char *str, char *target, int amount)
     return 0;
 }
 
-int main()
-{
-    char *scope;
-    char a[200] = "laaalasdsadsoijwiqjdioqwjdiowqdjowqidjwidowqjdjoqwidqncjanjnkjnkjqwndjwqndepjpweOOO";
-    char b[200] = "OOO";
-    char x[200] = "laaalasdsadsoijwiqjdioqwjdiowqdjowqidjwidowqjdjoqwidqncjanjnkjnkjqwndjwqndepjpweOOO";
-    char y[200] = "OOO";
+// int main()
+// {
+//     char *scope;
+//     char a[200] = "laaalasdsadsoijwiqjdioqwjdiowqdjowqidjwidowqjdjoqwidqncjanjnkjnkjqwndjwqndepjpweOOO";
+//     char b[200] = "OOO";
+//     char x[200] = "laaalasdsadsoijwiqjdioqwjdiowqdjowqidjwidowqjdjoqwidqncjanjnkjnkjqwndjwqndepjpweOOO";
+//     char y[200] = "OOO";
 
-    // scope = strnstr(a, b, 4);    // ft_strnstr(x, y, 4);
-    printf("ft_strnstr = %s\n", ft_strnstr(x, b, -10));
-    printf("strnstr    = %s", strnstr(a, b, -10));
-}
+//     // scope = strnstr(a, b, 4);    // ft_strnstr(x, y, 4);
+//     printf("ft_strnstr = %s\n", ft_strnstr(x, b, -10));
+//     printf("strnstr    = %s", strnstr(a, b, -10));
+// }
