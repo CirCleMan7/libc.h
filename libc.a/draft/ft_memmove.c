@@ -1,17 +1,61 @@
 #include "libft.h"
 #include <stdio.h>
 #include <string.h>
-char *ft_memmove(void *dest, char *src, size_t amount)
+char *ft_memmove(void *dest, const void *src, size_t amount)
 {
-    char	*start;
+    char *d;
+    char *s;
 
-    start = dest;
-    while (amount)
+    d = (char*)dest;
+    s = (char*)src;
+    if (dest < src)
+        ft_memcpy(dest, src, amount);
+    else if (d > s)
     {
-        *(char*)dest = *(char*)src;
-        amount--;
-        dest++;
-        src++;
-    } 
-    return (start);
+        {
+            while (amount--)
+                d[amount] = s[amount];
+        }
+    }
+    return (dest);
 }
+
+// int main()
+// {
+//     char s[] = "123456789";
+
+//     printf("%s", ft_memmove(&s[1], s, 4));
+// }
+
+
+/*
+    char s[] = "123456789";
+
+        char s[] = "123456789";
+        char s[] =   "3456789";
+
+                    012345678
+        char s[] = "123456789";
+        char s[] =   "3456789";
+
+                    012345678
+        char s[] = "123456789";
+        dst s[0] = "345678909"
+        src s[2] = 
+
+
+                    012345678
+        char s[] = "123456789";
+        dst s[2] = "  12121212"
+        src s[0] = 
+
+                    012345678
+        char s[] = "123456789";
+        dst s[2] = "  3456789"
+        src s[0] = "123456789"
+
+        px00000x00
+        px00000x02
+
+        (dst > src)
+*/
