@@ -36,13 +36,15 @@ char	**ft_split(char *s, char c)
 	int		j;
 	int		i;
 
-	answer = malloc(strings_len(s, c) * sizeof(char) + 1);
+	if (!(answer = malloc(strings_len(s, c) * sizeof(char) + 1)))
+        return (NULL);
 	start = answer;
 	i = 0;
 	j = 0;
 	while (*s)
 	{
-		answer[i] = malloc(string_len(s, c) * sizeof(char) + 1);
+		if (!(answer[i] = malloc(string_len(s, c) * sizeof(char) + 1)))
+            return (NULL);
 		while (*s != c && *s)
 		{
 			printf("inner loop : %c\t", *s);
@@ -61,14 +63,14 @@ char	**ft_split(char *s, char c)
 	answer[i] = NULL;
 	return (answer);
 }
-// int main()
-// {
-//     char s[100] = ",,,wor,ld,hello,worel,wffe,home,9";
-//     char **test;
+int main()
+{
+    char s[100] = ",,,wor,ld,hello,worel,wffe,home,9";
+    char **test;
 
-//     test = ft_split(s, ',');
-//     printf("\n%s\n", test[0]);
-//     for (int i = 0; i < 9; i++)
-//         printf("This array[%d] = %s\n", i, test[i]);
+    test = ft_split(s, ',');
+    printf("\n%s\n", test[0]);
+    for (int i = 0; i < 9; i++)
+        printf("This array[%d] = %s\n", i, test[i]);
 
-// }
+}

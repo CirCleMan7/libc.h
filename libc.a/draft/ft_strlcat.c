@@ -1,26 +1,23 @@
 #include "libft.h"
-#include <string.h>
 
-char	*ft_strlcat(char *dest, char *src, size_t amount)
+size_t	ft_strlcat(char *dest, char *src, size_t amount)
 {
-	char	*start;
+    size_t len;
 
-	start = dest;
+    len = ft_strlen(dest) + ft_strlen(src);
+    if (amount <= ft_strlen(dest))
+        return (ft_strlen(src) + amount);
 	while (*dest)
 	{
 		dest++;
 		amount--;
 	}
-	while (amount-- - 1 && amount > 0)
+	while (amount-- - 1 && *src)
 	{
 		*dest = *src;
 		dest++;
 		src++;
 	}
 	*dest = 0;
-	return (start);
-}
-
-int	main(void)
-{
+	return (len);
 }

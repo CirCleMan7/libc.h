@@ -1,87 +1,80 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "libft.h"
 
-char *max_num(char *number)
+char	*max_num(char *number)
 {
-    ft_strlcpy(number, "-2147483648", 12);
-    return (number);
+	ft_strlcpy(number, "-2147483648", 12);
+	return (number);
 }
 
-char *strrev(char *number)
+char	*strrev(char *number)
 {
-    int len;
-    int i;
-    int j;
-    char collect;
+	int		len;
+	int		i;
+	int		j;
+	char	collect;
 
-    i = 0;
-    j = ft_strlen(number) - 1;
-    len = ft_strlen(number) / 2;
-    if (*number == '-')
-        i = 1;
-    while(len--)
-    {
-        collect = *(number + i);
-        *(number + i) = *(number + j);
-        *(number + j) = collect;
-        i++;
-        j--;
-    }
-    return (number);
+	i = 0;
+	j = ft_strlen(number) - 1;
+	len = ft_strlen(number) / 2;
+	if (*number == '-')
+		i = 1;
+	while (len--)
+	{
+		collect = *(number + i);
+		*(number + i) = *(number + j);
+		*(number + j) = collect;
+		i++;
+		j--;
+	}
+	return (number);
 }
 
-char *negative(char *number, int *n)
+char	*negative(char *number, int *n)
 {
-    *n *= -1;
-    *number = '-';
-    return (number);
+	*n *= -1;
+	*number = '-';
+	return (number);
 }
 
-int intlen(int n)
+int	intlen(int n)
 {
-    int count;
+	int	count;
 
-    count = 1;
-    if (n == -2147483648)
-        return (11);
-    if (n < 0)
-    {
-        n *= -1;
-        count += 1;
-    }
-    while(n >= 10)
-    {
-        n /= 10;
-        count++;
-    }
-    return count;
+	count = 1;
+	if (n == -2147483648)
+		return (11);
+	if (n < 0)
+	{
+		n *= -1;
+		count += 1;
+	}
+	while (n >= 10)
+	{
+		n /= 10;
+		count++;
+	}
+	return (count);
 }
 
 char	*ft_itoa(int n)
 {
-    char *number;
-    char *start;
+	char	*number;
+	char	*start;
 
-    if (!(number = malloc((intlen(n) + 1) * sizeof(char))))
+	if (!(number = malloc((intlen(n) + 1) * sizeof(char))))
 		return (NULL);
-    start = number;
-    if (n == -2147483648)
-        return (max_num(number));
-    if (n < 0)
-        negative(number++, &n);
-    while (n >= 10)
-    {
-        *number = (n % 10) + 48;
-        number++;
-        n /= 10;
-    }
-    *number++ = n + 48;
-    *number = '\0';
-    return (strrev(start));
+	start = number;
+	if (n == -2147483648)
+		return (max_num(number));
+	if (n < 0)
+		negative(number++, &n);
+	while (n >= 10)
+	{
+		*number = (n % 10) + 48;
+		number++;
+		n /= 10;
+	}
+	*number++ = n + 48;
+	*number = '\0';
+	return (strrev(start));
 }
-
-// int main()
-// {
-//     printf("the number is : %s", ft_itoa(-200));
-// }

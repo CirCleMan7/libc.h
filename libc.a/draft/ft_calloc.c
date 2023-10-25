@@ -1,17 +1,18 @@
 #include "libft.h"
 
-char	*ft_calloc(int count, int size)
+void	*ft_calloc(size_t count, size_t size)
 {
 	char *box;
 	int number;
 	char *start;
 
 	number = count * size;
-	box = malloc(number);
+	if (!(box = malloc(number)))
+		return NULL;
 	start = box;
 	while (number--)
 	{
-		*box = 4;
+		*box = 0;
 		box++;
 	}
 	return (start);

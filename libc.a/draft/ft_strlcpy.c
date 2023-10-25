@@ -1,20 +1,20 @@
 #include "libft.h"
 
-size_t  ft_strlcpy(char *dest, char *src, size_t amount)
+size_t	ft_strlcpy(char *dest, char *src, size_t amount)
 {
-    size_t  lensrc;
+	size_t	lensrc;
 
-    lensrc = ft_strlen(src);
-    while (amount - 1 && amount > 0 && *src)
-    {
-        *dest = *src;
-        dest++;
-        src++;
-        amount--;
-    }
-    if (amount > 0)
-        *dest = 0;
-    return (lensrc);
+	lensrc = ft_strlen(src);
+	while (amount - 1 && amount > 0 && *src)
+	{
+		*dest = *src;
+		dest++;
+		src++;
+		amount--;
+	}
+	if (amount > 0)
+		*dest = 0;
+	return (lensrc);
 }
 
 // #include <string.h>

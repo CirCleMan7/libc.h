@@ -13,9 +13,9 @@ int	ft_strncmp(const char *str1, const char *str2, size_t amount)
 	return ((unsigned char)*str1 - (unsigned char)*str2);
 }
 
-#include <stdio.h>
+// #include <stdio.h>
 
-int	main(void)
-{
-	printf("%d", ft_strncmp("1", "1", 1));
-}
+// int	main(void)
+// {
+// 	printf("%d", ft_strncmp("1", "1", 1));
+// }

@@ -1,21 +1,49 @@
 #include "libft.h"
 
+int backtrim(char const *s, char const *set)
+{
+	int i;
+	int count;
+
+	count = 0;
+	i = 0;
+	while (*s)
+		s++;
+	s--;
+	while (*(set + i))
+	{
+		if (*(set + i) == *s)
+		{
+			s--;
+			i = -1;
+			count++;
+		}
+		i++;
+	}
+	return (count);
+}
+
 char	*ft_strtrim(char const *s, char const *set)
 {
-	char *start;
 	char *answer;
-	char *remove_point;
+	int i;
 
-	remove_point = ft_strnstr(s, set, ft_strlen(s));
-	answer = malloc(ft_strlen(s) - ft_strlen(set));
-	start = answer;
-	while (*s)
+	i = 0;
+	if (*s == '\0')
+		return "\0";
+	while (*(set + i))
 	{
-		if (s == remove_point)
-			s += ft_strlen(set);
-		*answer = *s;
-		s++;
-		answer++;
+		if (*(set + i) == *s)
+		{
+			s++;
+			i = -1;
+		}
+		i++;
 	}
-	return (start);
+	if (ft_strlen(s) == 0)
+		return ((char *)s);
+	if (!(answer = malloc((ft_strlen(s) - backtrim(s, set) + 1) * sizeof(char))))
+		return NULL;
+	ft_strlcpy(answer, (char *)s, ft_strlen(s) - backtrim(s, set) + 1);
+	return (answer);
 }
