@@ -1,8 +1,8 @@
 #include "libft.h"
 
-char *ft_strrchr(const char *str, int c)
+char	*ft_strrchr(const char *str, int c)
 {
-	const char	*collect;
+	const char *collect;
 
 	collect = NULL;
 	while (*str != 0)

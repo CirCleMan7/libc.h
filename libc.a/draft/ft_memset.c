@@ -1,15 +1,15 @@
 #include "libft.h"
 
-char *ft_memset(char *str, int chr, int amount)
+char	*ft_memset(void *str, int chr, size_t amount)
 {
-    char *start;
+	char	*start;
 
-    start = str;
-    while (amount)
-    {
-        *str = chr;
-        amount--;
-        str++;
-    }    
-    return (start);
+	start = str;
+	while (amount)
+	{
+		*(char *)str = (char)chr;
+		amount--;
+		str++;
+	}
+	return (start);
 }

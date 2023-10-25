@@ -1,9 +1,9 @@
 #include "libft.h"
 
-int ft_isascii(int nbr)
+int	ft_isascii(int nbr)
 {
 	if (nbr >= 0 && nbr <= 127)
-		return 1;
+		return (1);
 	else
-		return 0;
+		return (0);
 }

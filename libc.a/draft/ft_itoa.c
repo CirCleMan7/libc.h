@@ -1,49 +1,87 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include "libft.h"
 
-int intlen(int num)
+char *max_num(char *number)
+{
+    ft_strlcpy(number, "-2147483648", 12);
+    return (number);
+}
+
+char *strrev(char *number)
+{
+    int len;
+    int i;
+    int j;
+    char collect;
+
+    i = 0;
+    j = ft_strlen(number) - 1;
+    len = ft_strlen(number) / 2;
+    if (*number == '-')
+        i = 1;
+    while(len--)
+    {
+        collect = *(number + i);
+        *(number + i) = *(number + j);
+        *(number + j) = collect;
+        i++;
+        j--;
+    }
+    return (number);
+}
+
+char *negative(char *number, int *n)
+{
+    *n *= -1;
+    *number = '-';
+    return (number);
+}
+
+int intlen(int n)
 {
     int count;
 
-    count = 0;
-    while (num > 0)
+    count = 1;
+    if (n == -2147483648)
+        return (11);
+    if (n < 0)
     {
-        num /= 10;
+        n *= -1;
+        count += 1;
+    }
+    while(n >= 10)
+    {
+        n /= 10;
         count++;
     }
     return count;
 }
 
-int ten(int num, int amount)
+char	*ft_itoa(int n)
 {
-    int ten;
-
-    ten = 1;
-    while (num > 0 && amount--)
-        ten *= 10;
-    return ten;
-}
-
-int fontnum(int num, int amount)
-{
-    while (num > 0 && amount--)
-        num /= 10;
-    return num + 48;
-}
-
-char *ft_itoa(int n)
-{
-    int amount;
-    char *answer;
+    char *number;
     char *start;
 
-    answer = malloc(intlen(n));
-    amount = intlen(n);
-    start = answer;
-    while (amount--)
+    if (!(number = malloc((intlen(n) + 1) * sizeof(char))))
+		return (NULL);
+    start = number;
+    if (n == -2147483648)
+        return (max_num(number));
+    if (n < 0)
+        negative(number++, &n);
+    while (n >= 10)
     {
-        *answer = fontnum(n, amount);
-        answer++;
-        n %= ten(n, amount);
+        *number = (n % 10) + 48;
+        number++;
+        n /= 10;
     }
-    return start;
+    *number++ = n + 48;
+    *number = '\0';
+    return (strrev(start));
 }
+
+// int main()
+// {
+//     printf("the number is : %s", ft_itoa(-200));
+// }
