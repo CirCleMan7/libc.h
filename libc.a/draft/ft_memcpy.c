@@ -7,8 +7,8 @@ char	*ft_memcpy(void *dest, const void *src, size_t amount)
 	char *start;
 
 	start = dest;
-	// if (!(*(char *)dest) && !(*(char *)src))
-	// 	return start;
+	if (*(char *)dest == '\0' && *(char *)src == '\0')
+		return start;
 	while (amount--)
 	{
 		*(char *)dest = *(char *)src;
@@ -18,7 +18,7 @@ char	*ft_memcpy(void *dest, const void *src, size_t amount)
 	return (start);
 }
 
-// int	main()
-// {
-// 	printf("%s", ft_memcpy(((void *)0), ((void *)0), 3));
-// }
+int	main()
+{
+	printf("%s", ft_memcpy(((void *)0), ((void *)0), 3));
+}
