@@ -1,9 +1,9 @@
 #include "libft.h"
 
-int backtrim(char const *s, char const *set)
+int	backtrim(char const *s, char const *set)
 {
-	int i;
-	int count;
+	int	i;
+	int	count;
 
 	count = 0;
 	i = 0;
@@ -30,7 +30,7 @@ char	*ft_strtrim(char const *s, char const *set)
 
 	i = 0;
 	if (*s == '\0')
-		return "\0";
+		return ("\0");
 	while (*(set + i))
 	{
 		if (*(set + i) == *s)
@@ -42,8 +42,9 @@ char	*ft_strtrim(char const *s, char const *set)
 	}
 	if (ft_strlen(s) == 0)
 		return ((char *)s);
-	if (!(answer = malloc((ft_strlen(s) - backtrim(s, set) + 1) * sizeof(char))))
-		return NULL;
+	if (!(answer = malloc((ft_strlen(s) - backtrim(s, set) + 1)
+				* sizeof(char))))
+		return (NULL);
 	ft_strlcpy(answer, (char *)s, ft_strlen(s) - backtrim(s, set) + 1);
 	return (answer);
 }

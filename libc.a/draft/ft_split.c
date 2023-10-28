@@ -29,6 +29,24 @@ int	string_len(char *s, char c)
 	return (count);
 }
 
+char *collectstring(char *s, char c)
+{
+    char *collect;
+    int i;
+
+    i = 0;
+    if (!(collect = malloc(100)))
+        return (NULL);
+    while (*s != c && *s)
+    {
+        *collect = *s;
+        collect++;
+        s++;
+    }
+    *collect = '\0';
+    return (collect);
+}
+
 char	**ft_split(char *s, char c)
 {
 	char	**answer;
@@ -37,40 +55,27 @@ char	**ft_split(char *s, char c)
 	int		i;
 
 	if (!(answer = malloc(strings_len(s, c) * sizeof(char) + 1)))
-        return (NULL);
+		return (NULL);
 	start = answer;
 	i = 0;
-	j = 0;
 	while (*s)
 	{
-		if (!(answer[i] = malloc(string_len(s, c) * sizeof(char) + 1)))
-            return (NULL);
-		while (*s != c && *s)
-		{
-			printf("inner loop : %c\t", *s);
-			answer[i][j] = *s;
-			printf("answer[%d][%d] : %c\n", i, j, answer[i][j]);
-			j++;
-			s++;
-		}
-		answer[i][j] = '\0';
-		printf("out loop : %c\n", *s);
-		j = 0;
-		printf("the string in function : %s\n", start[i]);
+		answer[i] = collectstring(s, c);
+		printf("the string in function : %s\n", answer[i]);
 		i++;
-		s++;
+        while (*(s - 1) != c && *s)
+		    s++;
 	}
-	answer[i] = NULL;
 	return (answer);
 }
-int main()
+
+int	main(void)
 {
-    char s[100] = ",,,wor,ld,hello,worel,wffe,home,9";
-    char **test;
+	char s[100] = ",,,wor,ld,hello,worel,wffe,home,9";
+	char **test;
 
-    test = ft_split(s, ',');
-    printf("\n%s\n", test[0]);
-    for (int i = 0; i < 9; i++)
-        printf("This array[%d] = %s\n", i, test[i]);
-
+	test = ft_split(s, ',');
+	printf("\n%s\n", test[0]);
+	for (int i = 0; i < 9; i++)
+		printf("This array[%d] = %s\n", i, test[i]);
 }

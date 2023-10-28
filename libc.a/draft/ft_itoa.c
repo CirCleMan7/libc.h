@@ -58,8 +58,8 @@ int	intlen(int n)
 
 char	*ft_itoa(int n)
 {
-	char	*number;
-	char	*start;
+	char *number;
+	char *start;
 
 	if (!(number = malloc((intlen(n) + 1) * sizeof(char))))
 		return (NULL);

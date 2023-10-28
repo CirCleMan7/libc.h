@@ -5,7 +5,7 @@ char	*ft_strrchr(const char *str, int c)
 	const char *collect;
 
 	collect = NULL;
-	while (*str != 0)
+	while (*str)
 	{
 		if (*str == (char)c)
 			collect = str;

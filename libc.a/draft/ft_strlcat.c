@@ -2,11 +2,11 @@
 
 size_t	ft_strlcat(char *dest, char *src, size_t amount)
 {
-    size_t len;
+	size_t len;
 
-    len = ft_strlen(dest) + ft_strlen(src);
-    if (amount <= ft_strlen(dest))
-        return (ft_strlen(src) + amount);
+	len = ft_strlen(dest) + ft_strlen(src);
+	if (amount <= ft_strlen(dest))
+		return (ft_strlen(src) + amount);
 	while (*dest)
 	{
 		dest++;

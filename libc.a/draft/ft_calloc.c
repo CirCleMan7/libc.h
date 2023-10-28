@@ -8,7 +8,7 @@ void	*ft_calloc(size_t count, size_t size)
 
 	number = count * size;
 	if (!(box = malloc(number)))
-		return NULL;
+		return (NULL);
 	start = box;
 	while (number--)
 	{
