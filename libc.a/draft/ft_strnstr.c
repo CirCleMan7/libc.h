@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: srungsar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/29 11:07:52 by srungsar          #+#    #+#             */
+/*   Updated: 2023/10/29 11:08:09 by srungsar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 char	*ft_strnstr(const char *str, const char *target, size_t amount)
 {
-	char *answer;
-	const char *reset_target;
-	int reverse;
+	char		*answer;
+	const char	*reset_target;
+	int			reverse;
 
 	answer = (char *)str;
 	reset_target = target;

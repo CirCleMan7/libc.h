@@ -6,7 +6,7 @@
 /*   By: srungsar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 15:15:35 by srungsar          #+#    #+#             */
-/*   Updated: 2023/10/28 15:16:01 by srungsar         ###   ########.fr       */
+/*   Updated: 2023/10/29 11:03:01 by srungsar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 int	strings_len(char *s, char c)
 {
 	int	count;
-	int str = 0;
+	int	str;
 
+	str = 0;
 	count = 0;
 	while (*s)
 	{
@@ -33,7 +34,6 @@ int	strings_len(char *s, char c)
 			s++;
 		}
 	}
-	// printf("strings_len = %d\n", count);
 	return (count);
 }
 
@@ -47,32 +47,26 @@ int	string_len(char *s, char c)
 		s++;
 		count++;
 	}
-	// printf("string_len = %d\n", count);
 	return (count);
 }
 
-char *collectstring(char *s, char c)
+char	*collectstring(char *s, char c)
 {
-    char *collect;
-	char *start;
+	char	*collect;
+	char	*start;
 
-    if (!(collect = malloc((string_len(s, c) + 1) * sizeof(char))))
-        return (NULL);
-    start = collect;
-	// if (*s == c)
-	// 	s++;
-	// printf("s in collectstring : %s\n", s);
-    while (*s && *s != (char)c)
-    {
-        *collect = *s;
-		// printf("*collect : %c\n", *collect);
-		// printf("collect : %c\n", *collect);
-        collect++;
-        s++;
-    }
-    *collect = 0;
-	// printf("start : %s\n", start);
-    return (start);
+	collect = malloc((string_len(s, c) + 1) * sizeof(char));
+	if (!collect)
+		return (NULL);
+	start = collect;
+	while (*s && *s != (char)c)
+	{
+		*collect = *s;
+		collect++;
+		s++;
+	}
+	*collect = 0;
+	return (start);
 }
 
 char	**ft_split(char *s, char c)
@@ -82,7 +76,7 @@ char	**ft_split(char *s, char c)
 	int		i;
 	int		len;
 
-	answer = malloc((strings_len(s, c) + 1) * sizeof(char*));
+	answer = malloc((strings_len(s, c) + 1) * sizeof(char *));
 	if (!answer)
 		return (NULL);
 	start = answer;
@@ -90,7 +84,7 @@ char	**ft_split(char *s, char c)
 	len = strings_len(s, c);
 	while (*s)
 	{
-		if (*s != (char)c && *s && len > 0) 
+		if (*s != (char)c && *s && len > 0)
 		{
 			answer[i] = collectstring(s, c);
 			if (len-- > 1)
@@ -98,18 +92,8 @@ char	**ft_split(char *s, char c)
 			i++;
 		}
 		else
-			s++;;
+			s++;
 	}
 	answer[i] = 0;
 	return (answer);
 }
-
-// int	main(void)
-// {
-// 	char s[100] = "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse";
-// 	char **test;
-
-// 	test = ft_split(s, ' ');
-// 	for (int i = 0; test[i]; i++)
-// 		printf("This array[%d] = %s\n", i, test[i]);
-// }

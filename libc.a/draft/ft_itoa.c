@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: srungsar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/29 10:47:49 by srungsar          #+#    #+#             */
+/*   Updated: 2023/10/29 10:49:44 by srungsar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 char	*max_num(char *number)
@@ -58,10 +70,11 @@ int	intlen(int n)
 
 char	*ft_itoa(int n)
 {
-	char *number;
-	char *start;
+	char	*number;
+	char	*start;
 
-	if (!(number = malloc((intlen(n) + 1) * sizeof(char))))
+	number = malloc((intlen(n) + 1) * sizeof(char));
+	if (!number)
 		return (NULL);
 	start = number;
 	if (n == -2147483648)

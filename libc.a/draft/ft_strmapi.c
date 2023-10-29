@@ -1,5 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: srungsar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/29 11:06:57 by srungsar          #+#    #+#             */
+/*   Updated: 2023/10/29 11:07:25 by srungsar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
-#include <stdio.h>
 
 // char    upper(unsigned int nbr, char s)
 // {
@@ -13,7 +24,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	int		i;
 
 	i = 0;
-	if (!(str = malloc((ft_strlen(s) + 1) * sizeof(char))))
+	str = malloc((ft_strlen(s) + 1) * sizeof(char));
+	if (!str)
 		return (NULL);
 	collect = str;
 	while (*s)

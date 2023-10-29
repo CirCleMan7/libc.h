@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: srungsar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/29 11:09:08 by srungsar          #+#    #+#             */
+/*   Updated: 2023/10/29 11:26:20 by srungsar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 int	backtrim(char const *s, char const *set)
@@ -25,8 +37,8 @@ int	backtrim(char const *s, char const *set)
 
 char	*ft_strtrim(char const *s, char const *set)
 {
-	char *answer;
-	int i;
+	char	*answer;
+	int		i;
 
 	i = 0;
 	if (*s == '\0')
@@ -42,8 +54,9 @@ char	*ft_strtrim(char const *s, char const *set)
 	}
 	if (ft_strlen(s) == 0)
 		return ((char *)s);
-	if (!(answer = malloc((ft_strlen(s) - backtrim(s, set) + 1)
-				* sizeof(char))))
+	answer = malloc((ft_strlen(s) - backtrim(s, set) + 1)
+			* sizeof(char));
+	if (!answer)
 		return (NULL);
 	ft_strlcpy(answer, (char *)s, ft_strlen(s) - backtrim(s, set) + 1);
 	return (answer);

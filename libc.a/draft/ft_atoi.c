@@ -1,5 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: srungsar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/29 10:44:35 by srungsar          #+#    #+#             */
+/*   Updated: 2023/10/29 10:44:36 by srungsar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
-#include <stdio.h>
 
 int	ft_atoi(const char *str)
 {
@@ -25,11 +36,3 @@ int	ft_atoi(const char *str)
 		number *= -1;
 	return (number);
 }
-
-// #include <stdlib.h>
-// int main()
-// {
-//     printf("real atoi = %d\n", atoi("8"));
-//     printf("fake atoi = %d", ft_atoi("8"));
-
-// }
