@@ -12,12 +12,30 @@
 
 #include "libft.h"
 
+int	len_substr(char const *s, unsigned int start, size_t len)
+{
+	int	count;
+
+	count = 0;
+	while (*s && start)
+	{
+		s++;
+		start--;
+	}
+	while (len-- && *s)
+	{
+		count++;
+		s++;
+	}
+	return (count);
+}
+
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*substr;
 	char	*collect_substr;
 
-	substr = malloc((len + 1) * sizeof(char));
+	substr = malloc((len_substr(s, start, len) + 1) * sizeof(char));
 	if (!substr)
 		return (NULL);
 	while (start-- && *s)
@@ -32,10 +50,3 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	*substr = '\0';
 	return (collect_substr);
 }
-
-// int main()
-// {
-//     char *a;
-//     a = ft_substr("hola", 0, 185);
-//     printf("%s", a);
-// }
