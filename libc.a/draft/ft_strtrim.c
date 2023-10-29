@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 int	backtrim(char const *s, char const *set)
 {
@@ -39,10 +40,10 @@ char	*ft_strtrim(char const *s, char const *set)
 {
 	char	*answer;
 	int		i;
+	int		len;
 
 	i = 0;
-	if (*s == '\0')
-		return ("\0");
+	len = 1;
 	while (*(set + i))
 	{
 		if (*(set + i) == *s)
@@ -52,12 +53,17 @@ char	*ft_strtrim(char const *s, char const *set)
 		}
 		i++;
 	}
-	if (ft_strlen(s) == 0)
-		return ((char *)s);
-	answer = malloc((ft_strlen(s) - backtrim(s, set) + 1)
+	if (backtrim(s, set) > (int)ft_strlen(s))
+		len = 0;
+	answer = malloc((ft_strlen(s) - (backtrim(s, set) * len) + 1)
 			* sizeof(char));
 	if (!answer)
 		return (NULL);
-	ft_strlcpy(answer, (char *)s, ft_strlen(s) - backtrim(s, set) + 1);
+	ft_strlcpy(answer, (char *)s, ft_strlen(s) - (backtrim(s, set) * len) + 1);
 	return (answer);
 }
+// #include <stdio.h>
+// int	main()
+// {
+// 	printf("%s", ft_strtrim("", "cdef"));
+// }

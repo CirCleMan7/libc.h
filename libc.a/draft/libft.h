@@ -11,8 +11,9 @@
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
-#include <unistd.h>
-#include <stdlib.h>
+# define LIBFT_H
+# include <unistd.h>
+# include <stdlib.h>
 
 int		ft_isalpha(int nbr);
 int		ft_isalnum(int nbr);
@@ -22,11 +23,11 @@ int		ft_isprint(int nbr);
 int		ft_tolower(int nbr);
 int		ft_toupper(int nbr);
 int		ft_atoi(const char *str);
-char	*ft_memchr(const void *str, int c, size_t amount);
+void	*ft_memchr(const void *str, int c, size_t amount);
 int		ft_memcmp(const void *str1, const void *str2, size_t amount);
-char	*ft_memmove(void *dest, const void *src, size_t amount);
-char	*ft_memcpy(void *dest, const void *src, size_t amount);
-char	*ft_memset(void *str, int chr, size_t amount);
+void	*ft_memmove(void *dest, const void *src, size_t amount);
+void	*ft_memcpy(void *dest, const void *src, size_t amount);
+void	*ft_memset(void *str, int chr, size_t amount);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *str, int c);
 size_t	ft_strlen(const char *s);
