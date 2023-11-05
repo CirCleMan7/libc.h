@@ -14,6 +14,7 @@
 # define LIBFT_H
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdio.h>
 
 int		ft_isalpha(int nbr);
 int		ft_isalnum(int nbr);

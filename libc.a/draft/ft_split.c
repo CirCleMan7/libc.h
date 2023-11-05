@@ -6,7 +6,7 @@
 /*   By: srungsar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 15:15:35 by srungsar          #+#    #+#             */
-/*   Updated: 2023/10/29 11:03:01 by srungsar         ###   ########.fr       */
+/*   Updated: 2023/11/05 15:19:59 by srungsar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,50 +50,64 @@ int	string_len(char *s, char c)
 	return (count);
 }
 
-char	*collectstring(char *s, char c)
+char	*collectstring(char **s, char c)
 {
 	char	*collect;
 	char	*start;
 
-	collect = malloc((string_len(s, c) + 1) * sizeof(char));
+	collect = malloc((string_len(*s, c) + 1));
 	if (!collect)
 		return (NULL);
 	start = collect;
-	while (*s && *s != (char)c)
+	while (**s == c && **s)
+		(*s)++;
+	while (**s && **s != (char)c)
 	{
-		*collect = *s;
+		*collect = **s;
 		collect++;
-		s++;
+		(*s)++;
 	}
+	while (**s == c && **s)
+		(*s)++;
 	*collect = 0;
 	return (start);
+}
+
+void	free_split(char **answer, int i)
+{
+	int	len;
+
+	len = 0;
+	while (len < i)
+	{
+		free(answer[len]);
+		len++;
+	}
+	free(answer);
 }
 
 char	**ft_split(char *s, char c)
 {
 	char	**answer;
-	char	**start;
 	int		i;
 	int		len;
 
-	answer = malloc((strings_len(s, c) + 1) * sizeof(char *));
+	answer = ft_calloc((strings_len(s, c) + 1), sizeof(char *));
 	if (!answer)
 		return (NULL);
-	start = answer;
 	i = 0;
 	len = strings_len(s, c);
-	while (*s)
+	while (*s && *s == c)
+		s++;
+	while (*s && len-- > 0)
 	{
-		if (*s != (char)c && *s && len > 0)
+		answer[i] = collectstring(&s, c);
+		if (!answer[i])
 		{
-			answer[i] = collectstring(s, c);
-			if (len-- > 1)
-				s = ft_strchr(s, c);
-			i++;
+			free_split(answer, i);
+			return (NULL);
 		}
-		else
-			s++;
+		i++;
 	}
-	answer[i] = 0;
 	return (answer);
 }
